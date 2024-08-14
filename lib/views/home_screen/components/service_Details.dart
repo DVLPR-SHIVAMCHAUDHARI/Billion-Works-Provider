@@ -82,7 +82,7 @@ class ServiceDetails extends StatelessWidget {
                           Text(
                             "01 Hour",
                             style: TextStyle(
-                                color: Appcolor.loginButtonColor,
+                                color: Appcolor.primaryColor,
                                 fontSize: 14,
                                 fontFamily: Typo.medium),
                           )
@@ -104,7 +104,7 @@ class ServiceDetails extends StatelessWidget {
                           Text(
                             "01 Hour",
                             style: TextStyle(
-                                color: Appcolor.loginButtonColor,
+                                color: Appcolor.primaryColor,
                                 fontSize: 14,
                                 fontFamily: Typo.medium),
                           )

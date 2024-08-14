@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:provider/consts/Asseturl.dart';
 import 'package:provider/consts/colorpallete.dart';
 import 'package:provider/views/home_screen/homescreen.dart';
@@ -26,10 +27,10 @@ class _HomeState extends State<Home> {
   ];
 
   List icons = [
-    Asseturl.icHome,
-    Asseturl.igTicket,
-    Asseturl.icWallet,
-    Asseturl.icNotification,
+    Asseturl.iconHome,
+    Asseturl.iconWallet,
+    Asseturl.iconNotifications,
+    Asseturl.iconBookings,
   ];
 
   PageController pageController = PageController();
@@ -38,32 +39,37 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: Container(
+        alignment: Alignment.center,
         width: double.infinity,
-        height: 60.h,
+        height: 80.h,
         child: GestureDetector(
           onTap: () {
             setState(() {});
           },
           child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: List.generate(
-                  icons.length,
-                  (index) => GestureDetector(
-                        onTap: () {
-                          selectedTabIndex = index;
-                          pageController.animateToPage(index,
-                              duration: Duration(milliseconds: 30),
-                              curve: Curves.ease);
-                          setState(() {});
-                        },
-                        child: Image.asset(
-                          icons[index],
-                          scale: 3,
-                          color: index == selectedTabIndex
-                              ? Appcolor.loginButtonColor
-                              : Appcolor.greytextColor,
-                        ),
-                      ))),
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: List.generate(
+              icons.length,
+              (index) => GestureDetector(
+                onTap: () {
+                  selectedTabIndex = index;
+                  pageController.animateToPage(index,
+                      duration: Duration(milliseconds: 500),
+                      curve: Curves.ease);
+                  setState(() {});
+                },
+                child: SvgPicture.asset(
+                  icons[index],
+                  color: index == selectedTabIndex
+                      ? Appcolor.primaryColor
+                      : Appcolor.greytextColor,
+                  width: 20,
+                  height: 20,
+                  fit: BoxFit.scaleDown,
+                ),
+              ),
+            ),
+          ),
         ),
       ),
       body: PageView(

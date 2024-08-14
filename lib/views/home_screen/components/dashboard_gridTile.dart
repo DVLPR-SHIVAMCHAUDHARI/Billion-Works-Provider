@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/consts/colorpallete.dart';
@@ -9,9 +8,10 @@ Container dashboardGridTile({number, text, image}) {
     padding: EdgeInsets.all(8),
     alignment: Alignment.center,
     decoration: BoxDecoration(
-      border: Border.all(color: Appcolor.textfieldColor),
-    ),
+        border: Border.all(color: Appcolor.textfieldColor),
+        borderRadius: BorderRadius.circular(5.r)),
     child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -21,7 +21,7 @@ Container dashboardGridTile({number, text, image}) {
               number,
               style: TextStyle(
                   fontSize: 22.sp,
-                  color: Appcolor.loginButtonColor,
+                  color: Appcolor.primaryColor,
                   fontFamily: Typo.Worksans_Semibold),
             ),
             SizedBox(

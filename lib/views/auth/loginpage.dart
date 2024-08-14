@@ -1,35 +1,36 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/consts/Asseturl.dart';
 import 'package:provider/consts/colorpallete.dart';
 import 'package:provider/consts/typography.dart';
 import 'package:provider/views/home/home.dart';
-import 'package:provider/views/home_screen/homescreen.dart';
-import 'package:provider/views/signupPage.dart';
+import 'package:provider/views/auth/signupPage.dart';
+import 'package:provider/views/shared_widgets/custom_textfield.dart';
 
-class Loginpage extends StatefulWidget {
-  const Loginpage({super.key});
+class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
 
   static String id = "loginpage";
 
   @override
-  State<Loginpage> createState() => _LoginpageState();
+  State<LoginPage> createState() => _LoginPageState();
 }
 
-class _LoginpageState extends State<Loginpage> {
-  bool is_checked = false;
+class _LoginPageState extends State<LoginPage> {
+  bool isChecked = false;
+
+  TextEditingController emailField = TextEditingController();
+  TextEditingController passwordField = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: Container(
-      height: double.infinity,
       width: double.infinity,
-      padding: EdgeInsets.all(15),
+      padding: EdgeInsets.symmetric(horizontal: 16.w),
       child: SingleChildScrollView(
+        physics: ClampingScrollPhysics(),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -55,44 +56,18 @@ class _LoginpageState extends State<Loginpage> {
             SizedBox(
               height: 79.h,
             ),
-            TextField(
-              decoration: InputDecoration(
-                  filled: true,
-                  fillColor: Appcolor.textfieldColor,
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
-                      borderSide: BorderSide.none),
-                  hintText: "Email Address",
-                  hintStyle: TextStyle(
-                    color: Appcolor.greytextColor,
-                    fontFamily: Typo.medium,
-                    fontSize: 14.sp,
-                  ),
-                  suffixIcon: Image.asset(
-                    Asseturl.igMessage,
-                    scale: 3,
-                  )),
+            customTextField(
+              controller: emailField,
+              hintText: "Email Address",
+              suffixIcon: Asseturl.igMessage,
             ),
             SizedBox(
               height: 24.h,
             ),
-            TextField(
-              decoration: InputDecoration(
-                  filled: true,
-                  fillColor: Appcolor.textfieldColor,
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
-                      borderSide: BorderSide.none),
-                  hintText: "Password ",
-                  hintStyle: TextStyle(
-                    color: Appcolor.greytextColor,
-                    fontFamily: Typo.medium,
-                    fontSize: 14.sp,
-                  ),
-                  suffixIcon: Image.asset(
-                    Asseturl.igHide,
-                    scale: 3,
-                  )),
+            customTextField(
+              controller: passwordField,
+              hintText: "Password",
+              suffixIcon: Asseturl.igHide,
             ),
             SizedBox(
               height: 10.h,
@@ -103,10 +78,10 @@ class _LoginpageState extends State<Loginpage> {
                 Row(
                   children: [
                     Checkbox(
-                        activeColor: Appcolor.loginButtonColor,
-                        value: is_checked,
+                        activeColor: Appcolor.primaryColor,
+                        value: isChecked,
                         onChanged: (value) {
-                          is_checked = value!;
+                          isChecked = value!;
                           setState(() {});
                         }),
                     Text(
@@ -118,52 +93,34 @@ class _LoginpageState extends State<Loginpage> {
                     ),
                   ],
                 ),
-                Row(
-                  children: [
-                    TextButton(
-                        onPressed: () {},
-                        child: Text(
-                          "Forgot Password?",
-                          style: TextStyle(
-                              color: Appcolor.loginButtonColor,
-                              fontFamily: Typo.Worksans_SemiboldItalic,
-                              fontSize: 12),
-                        ))
-                  ],
+                TextButton(
+                  onPressed: () {},
+                  child: Text(
+                    "Forgot Password?",
+                    style: TextStyle(
+                        color: Appcolor.primaryColor,
+                        fontFamily: Typo.Worksans_SemiboldItalic,
+                        fontSize: 12),
+                  ),
                 )
               ],
             ),
             SizedBox(
               height: 40.h,
             ),
-            // Container(
-            //   alignment: Alignment.center,
-            //   width: 335.w,
-            //   height: 45.h,
-            //   decoration: BoxDecoration(
-            //       color: Appcolor.loginButtonColor,
-            //       borderRadius: BorderRadius.circular(12.r)),
-            //   child: Text("LOGIN",
-            //       style: TextStyle(
-            //           fontFamily: Typo.Worksans_Semibold,
-            //           fontSize: 16.sp,
-            //           color: Colors.white)),
-            // )
             SizedBox(
-                width: double.infinity,
-                height: 45.h,
-                child: FilledButton(
-                    style: FilledButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12.r))),
-                    onPressed: () {
-                      GoRouter.of(context).goNamed(Home.id);
-                    },
-                    child: Text("LOGIN"))),
+              width: double.infinity,
+              height: 45.h,
+              child: FilledButton(
+                onPressed: () {
+                  GoRouter.of(context).goNamed(Home.id);
+                },
+                child: Text("LOGIN"),
+              ),
+            ),
             SizedBox(
               height: 16.h,
             ),
-
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -182,21 +139,21 @@ class _LoginpageState extends State<Loginpage> {
                       "Sign Up",
                       style: TextStyle(
                           decoration: TextDecoration.underline,
-                          color: Appcolor.loginButtonColor,
+                          color: Appcolor.primaryColor,
                           fontFamily: Typo.Worksans_SemiboldItalic),
                     ))
               ],
             ),
-
             SizedBox(
               height: 104.h,
             ),
             Row(
               children: [
                 Expanded(
-                    child: Divider(
-                  color: Appcolor.textfieldColor,
-                )),
+                  child: Divider(
+                    color: Appcolor.textfieldColor,
+                  ),
+                ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10),
                   child: Text(
@@ -231,9 +188,6 @@ class _LoginpageState extends State<Loginpage> {
                   child: Image.asset(Asseturl.igPhone, scale: 3),
                 ),
               ],
-            ),
-            SizedBox(
-              height: 80.h,
             ),
           ],
         ),

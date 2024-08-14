@@ -6,18 +6,21 @@ import 'package:go_router/go_router.dart';
 import 'package:provider/consts/asseturl.dart';
 import 'package:provider/consts/colorpallete.dart';
 import 'package:provider/consts/typography.dart';
+import 'package:provider/main.dart';
 import 'package:provider/views/home_screen/components/service_Details.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-servicegrid(context) {
+servicegrid() {
   return GestureDetector(
     onTap: () {
-      GoRouter.of(context).goNamed(ServiceDetails.id);
+      GoRouter.of(navigatorKey.currentState!.context)
+          .goNamed(ServiceDetails.id);
     },
     child: Container(
       decoration: BoxDecoration(
-          color: Appcolor.greybgColor,
-          borderRadius: BorderRadius.circular(12.r)),
+        color: Appcolor.greybgColor,
+        borderRadius: BorderRadius.circular(12.r),
+      ),
       child: Column(
         children: [
           Stack(
@@ -40,7 +43,7 @@ servicegrid(context) {
                     "PAINTING",
                     style: TextStyle(
                         fontSize: 8.sp,
-                        color: Appcolor.loginButtonColor,
+                        color: Appcolor.primaryColor,
                         fontFamily: Typo.Worksans_Semibold),
                   ),
                 ),
@@ -50,7 +53,6 @@ servicegrid(context) {
                 top: 86,
                 child: Container(
                   padding: EdgeInsets.all(2),
-                  height: 22,
                   width: 50,
                   decoration: BoxDecoration(
                       color: Colors.white,
@@ -58,10 +60,10 @@ servicegrid(context) {
                   child: Container(
                     alignment: Alignment.center,
                     width: 44.w,
-                    height: 22.h,
                     decoration: BoxDecoration(
-                        color: Appcolor.loginButtonColor,
-                        borderRadius: BorderRadius.circular(25.r)),
+                      color: Appcolor.primaryColor,
+                      borderRadius: BorderRadius.circular(25.r),
+                    ),
                     child: Text(
                       "\$150",
                       style: TextStyle(
@@ -93,7 +95,8 @@ servicegrid(context) {
                   ],
                 ),
                 Text(
-                  "Painting for beautiful Homes...",
+                  "Painting for beautiful Homes sdfasdfasdfasdf",
+                  maxLines: 2,
                   style: TextStyle(
                       fontFamily: Typo.medium,
                       fontSize: 14.sp,

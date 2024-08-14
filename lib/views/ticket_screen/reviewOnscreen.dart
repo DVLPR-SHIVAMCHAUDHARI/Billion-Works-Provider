@@ -19,7 +19,7 @@ class Reviewonscreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Appcolor.loginButtonColor,
+        backgroundColor: Appcolor.primaryColor,
         automaticallyImplyLeading: false,
         leading: IconButton(
           onPressed: () {

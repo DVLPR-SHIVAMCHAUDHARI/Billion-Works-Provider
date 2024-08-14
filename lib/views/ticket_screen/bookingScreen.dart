@@ -5,11 +5,10 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/consts/asseturl.dart';
 import 'package:provider/consts/colorpallete.dart';
+import 'package:provider/consts/margins_and_spacing.dart';
 import 'package:provider/consts/typography.dart';
 import 'package:provider/views/ticket_screen/components/bookingOnTap.dart';
 import 'package:provider/views/wallet_screen/wallet_screen.dart';
-
-import 'package:velocity_x/velocity_x.dart';
 
 class BookingScreen extends StatefulWidget {
   BookingScreen({super.key});
@@ -30,7 +29,7 @@ class _BookingScreenState extends State<BookingScreen> {
         clipBehavior: Clip.antiAlias,
         decoration: BoxDecoration(
             color: Colors.white, borderRadius: BorderRadius.circular(12.r)),
-        margin: EdgeInsets.symmetric(vertical: 75, horizontal: 20),
+        margin: EdgeInsets.symmetric(vertical: 60.h, horizontal: 20.w),
         width: double.infinity,
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -38,7 +37,7 @@ class _BookingScreenState extends State<BookingScreen> {
             Container(
               clipBehavior: Clip.antiAlias,
               padding: EdgeInsets.symmetric(vertical: 16.5, horizontal: 24),
-              decoration: BoxDecoration(color: Appcolor.loginButtonColor),
+              decoration: BoxDecoration(color: Appcolor.primaryColor),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -79,7 +78,7 @@ class _BookingScreenState extends State<BookingScreen> {
                       Text(
                         "\$120",
                         style: TextStyle(
-                            color: Appcolor.loginButtonColor,
+                            color: Appcolor.primaryColor,
                             fontFamily: Typo.Worksans_Semibold,
                             fontSize: 22.sp),
                       ),
@@ -274,7 +273,7 @@ class _BookingScreenState extends State<BookingScreen> {
                 borderRadius: BorderRadius.circular(12),
                 color: Colors.white,
               ),
-              margin: EdgeInsets.symmetric(vertical: 99, horizontal: 20),
+              margin: EdgeInsets.symmetric(vertical: 80.h, horizontal: 20.w),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
@@ -282,7 +281,7 @@ class _BookingScreenState extends State<BookingScreen> {
                     padding: EdgeInsets.all(16),
                     alignment: Alignment.center,
                     width: double.infinity,
-                    decoration: BoxDecoration(color: Appcolor.loginButtonColor),
+                    decoration: BoxDecoration(color: Appcolor.primaryColor),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -456,7 +455,7 @@ class _BookingScreenState extends State<BookingScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Appcolor.loginButtonColor,
+        backgroundColor: Appcolor.primaryColor,
         title: Text(
           "Booking",
           style: TextStyle(
@@ -465,9 +464,8 @@ class _BookingScreenState extends State<BookingScreen> {
       ),
       body: Container(
         width: double.infinity,
-        height: double.infinity,
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
+          padding: Spacing.screenPadding,
           child: SingleChildScrollView(
             child: Column(
               children: [
@@ -482,10 +480,13 @@ class _BookingScreenState extends State<BookingScreen> {
                             ))
                         .toList(),
                     onChanged: (value) {}),
-                bookingcontainer(),
-                bookingcontainer(),
-                bookingcontainer(),
-                bookingcontainer(),
+                SizedBox(
+                  height: 20.h,
+                ),
+                ...List.generate(
+                  10,
+                  (index) => bookingcontainer(),
+                )
               ],
             ),
           ),
@@ -501,38 +502,35 @@ class _BookingScreenState extends State<BookingScreen> {
       },
       child: Container(
         padding: EdgeInsets.all(16),
-        width: 335.w,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12.r),
             border: Border.all(color: Appcolor.greybgColor)),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Container(
-              child: Stack(
-                children: [
-                  Image.asset(Asseturl.icBookingimage1),
-                  Positioned(
-                    top: 10,
-                    left: 10,
-                    child: Container(
-                      alignment: Alignment.center,
-                      height: 26.h,
-                      width: 71.w,
-                      decoration: BoxDecoration(
-                          color: Colors.red,
-                          borderRadius: BorderRadius.circular(170)),
-                      child: Text(
-                        "Pending",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 12.sp,
-                            fontFamily: Typo.medium),
-                      ),
+            Stack(
+              children: [
+                Image.asset(Asseturl.icBookingimage1),
+                Positioned(
+                  top: 10,
+                  left: 10,
+                  child: Container(
+                    alignment: Alignment.center,
+                    height: 26.h,
+                    width: 71.w,
+                    decoration: BoxDecoration(
+                        color: Colors.red,
+                        borderRadius: BorderRadius.circular(170)),
+                    child: Text(
+                      "Pending",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 12.sp,
+                          fontFamily: Typo.medium),
                     ),
-                  )
-                ],
-              ),
+                  ),
+                )
+              ],
             ),
             SizedBox(
               height: 22.5.h,
@@ -552,7 +550,7 @@ class _BookingScreenState extends State<BookingScreen> {
                   height: 24.h,
                   width: 52.w,
                   decoration: BoxDecoration(
-                      color: Appcolor.loginButtonColor,
+                      color: Appcolor.primaryColor,
                       borderRadius: BorderRadius.circular(170)),
                   child: Text(
                     "#123",
@@ -571,7 +569,7 @@ class _BookingScreenState extends State<BookingScreen> {
               children: [
                 Text("\$120",
                     style: TextStyle(
-                        color: Appcolor.loginButtonColor,
+                        color: Appcolor.primaryColor,
                         fontSize: 22.sp,
                         fontFamily: Typo.bold)),
                 SizedBox(
@@ -589,7 +587,10 @@ class _BookingScreenState extends State<BookingScreen> {
             ),
             Row(
               children: [
-                SvgPicture.asset(Asseturl.icLocation),
+                SvgPicture.asset(
+                  Asseturl.icLocation,
+                  width: 14.w,
+                ),
                 SizedBox(
                   width: 10.w,
                 ),
@@ -607,7 +608,10 @@ class _BookingScreenState extends State<BookingScreen> {
             ),
             Row(
               children: [
-                SvgPicture.asset(Asseturl.icCalender),
+                SvgPicture.asset(
+                  Asseturl.icCalender,
+                  width: 14,
+                ),
                 SizedBox(
                   width: 10.w,
                 ),
@@ -618,11 +622,13 @@ class _BookingScreenState extends State<BookingScreen> {
                       fontFamily: Typo.medium,
                       color: Appcolor.greytextColor),
                 ),
-                Text("8:30 AM",
-                    style: TextStyle(
-                      fontSize: 12.sp,
-                      fontFamily: Typo.medium,
-                    ))
+                Text(
+                  "8:30 AM",
+                  style: TextStyle(
+                    fontSize: 12.sp,
+                    fontFamily: Typo.medium,
+                  ),
+                )
               ],
             ),
             SizedBox(
@@ -630,7 +636,10 @@ class _BookingScreenState extends State<BookingScreen> {
             ),
             Row(
               children: [
-                SvgPicture.asset(Asseturl.icProfile),
+                SvgPicture.asset(
+                  Asseturl.icProfile,
+                  width: 14.w,
+                ),
                 SizedBox(
                   width: 10.w,
                 ),
@@ -650,9 +659,7 @@ class _BookingScreenState extends State<BookingScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SizedBox(
-                  width: 140.w,
-                  height: 38.h,
+                Expanded(
                   child: FilledButton(
                       style: FilledButton.styleFrom(
                           shape: RoundedRectangleBorder(
@@ -669,23 +676,22 @@ class _BookingScreenState extends State<BookingScreen> {
                 SizedBox(
                   width: 20.w,
                 ),
-                SizedBox(
-                  width: 140.w,
-                  height: 38.h,
+                Expanded(
                   child: FilledButton(
-                      style: FilledButton.styleFrom(
-                          backgroundColor: Appcolor.greybgColor,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(5.r))),
-                      onPressed: () {},
-                      child: Text(
-                        "Decline",
-                        style: TextStyle(
-                          fontFamily: Typo.medium,
-                          fontSize: 14.sp,
-                          color: Appcolor.blacktextColor,
-                        ),
-                      )),
+                    style: FilledButton.styleFrom(
+                        backgroundColor: Appcolor.greybgColor,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(5.r))),
+                    onPressed: () {},
+                    child: Text(
+                      "Decline",
+                      style: TextStyle(
+                        fontFamily: Typo.medium,
+                        fontSize: 14.sp,
+                        color: Appcolor.blacktextColor,
+                      ),
+                    ),
+                  ),
                 ),
               ],
             )

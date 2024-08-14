@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Appcolor {
-  static Color loginButtonColor = Color(0xff5F60B9);
+  static Color primaryColor = Color(0xff5F60B9);
   static Color greybgColor = Color(0xffF0F0FA);
   static Color greytextColor = Color(0xff6C757D);
   static Color textfieldColor = Color(0xffF6F7F9);

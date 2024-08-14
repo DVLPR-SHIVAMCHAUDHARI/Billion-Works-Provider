@@ -44,7 +44,7 @@ class Bookingontap extends StatelessWidget {
                 Text(
                   "ID : #123",
                   style: TextStyle(
-                      color: Appcolor.loginButtonColor,
+                      color: Appcolor.primaryColor,
                       fontFamily: Typo.Worksans_Semibold,
                       fontSize: 14.sp),
                 )
@@ -239,11 +239,12 @@ class Bookingontap extends StatelessWidget {
                   ],
                 ),
                 SizedBox(
-                  width: 24.w,
+                  width: 10.w,
                 ),
                 SizedBox(
                   height: 100.h,
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       CircleAvatar(
@@ -298,7 +299,7 @@ class Bookingontap extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Appcolor.loginButtonColor,
+        backgroundColor: Appcolor.primaryColor,
         leading: IconButton(
           onPressed: () {
             GoRouter.of(context).pop(BookingScreen());
@@ -357,7 +358,7 @@ class Bookingontap extends StatelessWidget {
                   Text(
                     "#123",
                     style: TextStyle(
-                        color: Appcolor.loginButtonColor,
+                        color: Appcolor.primaryColor,
                         fontFamily: Typo.Worksans_Semibold,
                         fontSize: 18.sp),
                   ),
@@ -581,7 +582,7 @@ class Bookingontap extends StatelessWidget {
                       "Rate Handyman",
                       style: TextStyle(
                           fontFamily: Typo.medium,
-                          color: Appcolor.loginButtonColor,
+                          color: Appcolor.primaryColor,
                           fontSize: 14.sp),
                     )
                   ],
@@ -799,7 +800,7 @@ class Bookingontap extends StatelessWidget {
                           style: TextStyle(
                             fontFamily: Typo.bold,
                             fontSize: 14.sp,
-                            color: Appcolor.loginButtonColor,
+                            color: Appcolor.primaryColor,
                           ),
                         )
                       ],
@@ -1084,7 +1085,7 @@ class Bookingontap extends StatelessWidget {
                           style: TextStyle(
                             fontFamily: Typo.Worksans_Semibold,
                             fontSize: 16.sp,
-                            color: Appcolor.loginButtonColor,
+                            color: Appcolor.primaryColor,
                           ),
                         )
                       ],

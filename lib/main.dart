@@ -3,25 +3,22 @@ import 'package:go_router/go_router.dart';
 import 'package:provider/consts/colorpallete.dart';
 import 'package:provider/views/home/home.dart';
 import 'package:provider/views/home_screen/components/service_Details.dart';
-import 'package:provider/views/home_screen/components/service_Grid.dart';
-import 'package:provider/views/loginpage.dart';
-import 'package:provider/views/home_screen/homescreen.dart';
+import 'package:provider/views/auth/loginpage.dart';
 import 'package:provider/views/home_screen/servicelist/service_list_1.dart';
-import 'package:provider/views/signupPage.dart';
-import 'package:provider/views/splashscreen.dart';
+import 'package:provider/views/auth/signupPage.dart';
+import 'package:provider/views/auth/splashscreen.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:provider/views/ticket_screen/bookingScreen.dart';
 import 'package:provider/views/ticket_screen/components/bookingOnTap.dart';
 import 'package:provider/views/ticket_screen/reviewOnscreen.dart';
 
 GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 void main() {
-  runApp(provider());
+  runApp(BillionWorksProvider());
 }
 
-class provider extends StatelessWidget {
-  provider({super.key});
+class BillionWorksProvider extends StatelessWidget {
+  BillionWorksProvider({super.key});
 
   GoRouter router = GoRouter(navigatorKey: navigatorKey, routes: [
     GoRoute(
@@ -30,9 +27,9 @@ class provider extends StatelessWidget {
       builder: (context, state) => Splashscreen(),
     ),
     GoRoute(
-        path: "/loginpage",
-        name: Loginpage.id,
-        builder: (context, state) => Loginpage(),
+        path: "/loginPage",
+        name: LoginPage.id,
+        builder: (context, state) => LoginPage(),
         routes: [
           GoRoute(
             path: "signupPage",
@@ -41,17 +38,17 @@ class provider extends StatelessWidget {
           ),
         ]),
     GoRoute(
-      path: "/Home",
+      path: "/home",
       name: Home.id,
       builder: (context, state) => Home(),
       routes: [
         GoRoute(
-          path: "service_Detail",
+          path: "serviceDetail",
           name: ServiceDetails.id,
           builder: (context, state) => ServiceDetails(),
         ),
         GoRoute(
-          path: "service_list",
+          path: "serviceList",
           name: ServiceList.id,
           builder: (context, state) => ServiceList(),
         ),
@@ -73,19 +70,38 @@ class provider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: Size(375, 812),
-      child: MaterialApp.router(
+      designSize: const Size(375, 812),
+      builder: (context, widget) => MaterialApp.router(
         routerConfig: router,
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-            scaffoldBackgroundColor: Color(0xffffffff),
-            inputDecorationTheme: InputDecorationTheme(
-              filled: true,
-              fillColor: Appcolor.textfieldColor,
-              border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12),
-                  borderSide: BorderSide.none),
-            )),
+          //FILLED BUTTON THEME
+
+          filledButtonTheme: FilledButtonThemeData(
+            style: ButtonStyle(
+              shape: WidgetStatePropertyAll(
+                RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12.r),
+                ),
+              ),
+            ),
+          ),
+
+          // COLOR SCHEME
+
+          colorScheme: ColorScheme.light(
+            primary: Appcolor.primaryColor,
+          ),
+
+          scaffoldBackgroundColor: Color(0xffffffff),
+          inputDecorationTheme: InputDecorationTheme(
+            filled: true,
+            fillColor: Appcolor.textfieldColor,
+            border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(12),
+                borderSide: BorderSide.none),
+          ),
+        ),
       ),
     );
   }

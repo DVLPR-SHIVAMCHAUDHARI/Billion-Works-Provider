@@ -29,7 +29,7 @@ Container serviceList() {
                   width: 44.w,
                   height: 22.h,
                   decoration: BoxDecoration(
-                      color: Appcolor.loginButtonColor,
+                      color: Appcolor.primaryColor,
                       borderRadius: BorderRadius.circular(25.r)),
                   child: Text(
                     "\$150",

@@ -13,7 +13,7 @@ class WalletScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Appcolor.loginButtonColor,
+        backgroundColor: Appcolor.primaryColor,
         title: Text(
           "Payment",
           style: TextStyle(
@@ -146,7 +146,7 @@ class WalletScreen extends StatelessWidget {
                     Text(
                       "\$1500",
                       style: TextStyle(
-                          color: Appcolor.loginButtonColor,
+                          color: Appcolor.primaryColor,
                           fontFamily: Typo.Worksans_Semibold,
                           fontSize: 14.sp),
                     ),

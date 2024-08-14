@@ -1,13 +1,14 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/consts/asseturl.dart';
 import 'package:provider/consts/colorpallete.dart';
+import 'package:provider/consts/margins_and_spacing.dart';
 import 'package:provider/consts/typography.dart';
-import 'package:provider/views/loginpage.dart';
+import 'package:provider/views/auth/loginpage.dart';
 import 'package:provider/views/home_screen/homescreen.dart';
+import 'package:provider/views/shared_widgets/custom_textfield.dart';
 
 class Signuppage extends StatelessWidget {
   const Signuppage({super.key});
@@ -18,9 +19,8 @@ class Signuppage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        padding: EdgeInsets.all(15),
+        padding: Spacing.screenPadding,
         width: double.infinity,
-        height: double.infinity,
         child: SingleChildScrollView(
           child: Column(
             children: [
@@ -51,23 +51,31 @@ class Signuppage extends StatelessWidget {
               SizedBox(
                 height: 38.h,
               ),
-              TextField(
-                  decoration: InputDecoration(
-                      filled: true,
-                      fillColor: Appcolor.textfieldColor,
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12),
-                          borderSide: BorderSide.none),
-                      hintText: "Full Name",
-                      hintStyle: TextStyle(
-                        color: Appcolor.greytextColor,
-                        fontFamily: Typo.medium,
-                        fontSize: 14.sp,
-                      ),
-                      suffixIcon: Image.asset(
-                        Asseturl.igProfile,
-                        scale: 3,
-                      ))),
+
+              customTextField(
+                hintText: "Full Name",
+                suffixIcon: Asseturl.igProfile,
+              ),
+
+              // TextField(
+              //   decoration: InputDecoration(
+              //     filled: true,
+              //     fillColor: Appcolor.textfieldColor,
+              //     border: OutlineInputBorder(
+              //         borderRadius: BorderRadius.circular(12),
+              //         borderSide: BorderSide.none),
+              //     hintText: "Full Name",
+              //     hintStyle: TextStyle(
+              //       color: Appcolor.greytextColor,
+              //       fontFamily: Typo.medium,
+              //       fontSize: 14.sp,
+              //     ),
+              //     suffixIcon: Image.asset(
+              //       Asseturl.igProfile,
+              //       scale: 3,
+              //     ),
+              //   ),
+              // ),
               SizedBox(
                 height: 24.h,
               ),
@@ -159,9 +167,6 @@ class Signuppage extends StatelessWidget {
                 width: double.infinity,
                 height: 45.h,
                 child: FilledButton(
-                  style: FilledButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12.r))),
                   onPressed: () {
                     GoRouter.of(context).goNamed(Homescreen.id);
                   },
@@ -183,13 +188,13 @@ class Signuppage extends StatelessWidget {
                   ),
                   TextButton(
                       onPressed: () {
-                        GoRouter.of(context).goNamed(Loginpage.id);
+                        GoRouter.of(context).goNamed(LoginPage.id);
                       },
                       child: Text(
                         "Sign In",
                         style: TextStyle(
                             decoration: TextDecoration.underline,
-                            color: Appcolor.loginButtonColor,
+                            color: Appcolor.primaryColor,
                             fontFamily: Typo.Worksans_SemiboldItalic),
                       ))
                 ],

@@ -27,7 +27,7 @@ class _ServiceListState extends State<ServiceList> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        backgroundColor: Appcolor.loginButtonColor,
+        backgroundColor: Appcolor.primaryColor,
         title: Text(
           "Service List",
           style: TextStyle(
@@ -69,7 +69,7 @@ class _ServiceListState extends State<ServiceList> {
                           crossAxisCount: 2),
                       children: List.generate(
                         5,
-                        (index) => servicegrid(context),
+                        (index) => servicegrid(),
                       ))
                   : ListView(
                       shrinkWrap: true,

@@ -1,15 +1,13 @@
-import 'dart:math';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
+
 import 'package:go_router/go_router.dart';
 import 'package:provider/consts/Asseturl.dart';
 import 'package:provider/consts/colorpallete.dart';
 import 'package:provider/consts/typography.dart';
-import 'package:provider/views/loginpage.dart';
+import 'package:provider/views/auth/loginpage.dart';
 
 class Splashscreen extends StatelessWidget {
   Splashscreen({super.key});
@@ -18,7 +16,7 @@ class Splashscreen extends StatelessWidget {
 
   changeScreen(context) {
     Future.delayed(Duration(seconds: 2), () {
-      GoRouter.of(context).goNamed(Loginpage.id);
+      GoRouter.of(context).goNamed(LoginPage.id);
     });
   }
 
@@ -28,7 +26,6 @@ class Splashscreen extends StatelessWidget {
     return Scaffold(
       body: Container(
         width: double.infinity,
-        height: double.infinity,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -40,9 +37,10 @@ class Splashscreen extends StatelessWidget {
             Text(
               "Provider",
               style: TextStyle(
-                  fontSize: 30.sp,
-                  fontFamily: Typo.medium,
-                  color: Appcolor.blacktextColor),
+                fontSize: 30.sp,
+                fontFamily: Typo.medium,
+                color: Appcolor.blacktextColor,
+              ),
             )
           ],
         ),

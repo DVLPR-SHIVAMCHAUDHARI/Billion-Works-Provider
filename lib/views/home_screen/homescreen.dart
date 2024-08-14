@@ -21,7 +21,7 @@ class Homescreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          backgroundColor: Appcolor.loginButtonColor,
+          backgroundColor: Appcolor.primaryColor,
           title: Text(
             "Home",
             style: TextStyle(
@@ -49,6 +49,7 @@ class Homescreen extends StatelessWidget {
           ]),
       body: Container(
         child: SingleChildScrollView(
+          physics: ClampingScrollPhysics(),
           child: Column(
             children: [
               SizedBox(
@@ -58,6 +59,8 @@ class Homescreen extends StatelessWidget {
                 padding: const EdgeInsets.all(16),
                 child: Column(
                   children: [
+                    // Info Card
+
                     Container(
                       padding: EdgeInsets.all(20),
                       alignment: Alignment.center,
@@ -65,10 +68,12 @@ class Homescreen extends StatelessWidget {
                           color: Appcolor.textfieldColor,
                           borderRadius: BorderRadius.circular(5.r)),
                       width: double.infinity,
-                      height: 82.h,
                       child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               RichText(
                                 text: TextSpan(
@@ -87,6 +92,9 @@ class Homescreen extends StatelessWidget {
                                             fontFamily: Typo.medium))
                                   ],
                                 ),
+                              ),
+                              SizedBox(
+                                height: 10.h,
                               ),
                               RichText(
                                 text: TextSpan(
@@ -114,14 +122,18 @@ class Homescreen extends StatelessWidget {
                               ),
                             ],
                           ),
-                          SizedBox(width: 62.w),
-                          Image.asset(Asseturl.igIcon1)
+                          Image.asset(
+                            Asseturl.igIcon1,
+                            width: 42.w,
+                          )
                         ],
                       ),
                     ),
                     SizedBox(
                       height: 40.h,
                     ),
+
+                    /// DASHBOARD GRID VIEW
                     GridView(
                       physics: NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
@@ -152,6 +164,8 @@ class Homescreen extends StatelessWidget {
                     SizedBox(
                       height: 40.h,
                     ),
+
+                    // MOTNHLY REVENUE
                     Text(
                       "Monthly Revenue USD",
                       style: TextStyle(
@@ -195,6 +209,8 @@ class Homescreen extends StatelessWidget {
                         ),
                       ],
                     ),
+
+                    // HANDYMAN SECTION
                     SizedBox(
                       height: 22.h,
                     ),
@@ -202,7 +218,7 @@ class Homescreen extends StatelessWidget {
                       physics: NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          mainAxisExtent: 220,
+                          mainAxisExtent: 240,
                           mainAxisSpacing: 20,
                           crossAxisSpacing: 20,
                           crossAxisCount: 2),
@@ -216,6 +232,8 @@ class Homescreen extends StatelessWidget {
                   ],
                 ),
               ),
+
+              //SERVICES SECTION
               Container(
                 padding: EdgeInsets.all(20),
                 child: Column(
@@ -261,12 +279,14 @@ class Homescreen extends StatelessWidget {
                           mainAxisSpacing: 20,
                           crossAxisCount: 2),
                       children: [
-                        servicegrid(context),
-                        servicegrid(context),
-                        servicegrid(context),
-                        servicegrid(context),
-                        servicegrid(context),
-                        servicegrid(context),
+                        servicegrid(),
+                        servicegrid(),
+                        servicegrid(),
+                        servicegrid(),
+                        servicegrid(),
+                        servicegrid(),
+                        servicegrid(),
+                        servicegrid(),
                       ],
                     ),
                   ],

@@ -8,62 +8,83 @@ import 'package:provider/consts/typography.dart';
 Container handymancard({icon}) {
   return Container(
     decoration: BoxDecoration(
-        color: Colors.white, borderRadius: BorderRadius.circular(12.r)),
+      color: Colors.white,
+      borderRadius: BorderRadius.circular(12.r),
+    ),
     child: Column(
       children: [
         Stack(
           children: [
-            Image.asset(
-              Asseturl.igHandy1,
+            Container(
+              width: 157.w,
+              height: 110.h,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  fit: BoxFit.cover,
+                  image: AssetImage(
+                    Asseturl.igHandy1,
+                  ),
+                ),
+              ),
             ),
             Positioned(
               top: 12,
               right: 14,
               child: Image.asset(
                 icon,
-                scale: 3,
+                scale: 3.5,
               ),
             ),
           ],
         ),
-        SizedBox(
-          height: 22.h,
-        ),
-        Text(
-          "Rickey Ledner",
-          style: TextStyle(
-              fontFamily: Typo.medium,
-              fontSize: 16.sp,
-              color: Appcolor.blacktextColor),
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            CircleAvatar(
-              backgroundColor: Appcolor.greybgColor,
-              child: Image.asset(
-                color: Appcolor.loginButtonColor,
-                Asseturl.igPhone,
-                scale: 4,
+        Padding(
+          padding: const EdgeInsets.all(12.0),
+          child: Column(
+            children: [
+              Text(
+                "Rickey Ledner",
+                style: TextStyle(
+                    fontFamily: Typo.medium,
+                    fontSize: 16.sp,
+                    color: Appcolor.blacktextColor),
               ),
-            ),
-            CircleAvatar(
-              backgroundColor: Appcolor.greybgColor,
-              child: Image.asset(
-                color: Appcolor.loginButtonColor,
-                Asseturl.igMessage,
-                scale: 4,
+              SizedBox(
+                height: 15.h,
               ),
-            ),
-            CircleAvatar(
-              backgroundColor: Appcolor.greybgColor,
-              child: Image.asset(
-                Asseturl.igChat,
-                color: Appcolor.loginButtonColor,
-                scale: 4,
+              SizedBox(
+                width: 116.w,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    CircleAvatar(
+                      backgroundColor: Appcolor.greybgColor,
+                      child: Image.asset(
+                        color: Appcolor.primaryColor,
+                        Asseturl.igPhone,
+                        scale: 4,
+                      ),
+                    ),
+                    CircleAvatar(
+                      backgroundColor: Appcolor.greybgColor,
+                      child: Image.asset(
+                        color: Appcolor.primaryColor,
+                        Asseturl.igMessage,
+                        scale: 4,
+                      ),
+                    ),
+                    CircleAvatar(
+                      backgroundColor: Appcolor.greybgColor,
+                      child: Image.asset(
+                        Asseturl.igChat,
+                        color: Appcolor.primaryColor,
+                        scale: 4,
+                      ),
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         )
       ],
     ),
